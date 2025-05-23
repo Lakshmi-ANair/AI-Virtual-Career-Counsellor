@@ -1,0 +1,19 @@
+version: "3.1"
+
+rules:
+- rule: Respond to bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Respond to greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+  # - action: action_listen # Bot implicitly listens after an action
+
+- rule: Respond to goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+  # - action: action_listen

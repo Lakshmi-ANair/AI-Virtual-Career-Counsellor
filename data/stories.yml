@@ -1,0 +1,62 @@
+version: "3.1"
+
+stories:
+  - story: happy path - user provides interest and gets recommendation
+    steps:
+      # GREETING HANDLED BY RULE
+      - intent: inform_interest
+        entities:
+          - interest_keyword: "coding"
+      - slot_was_set:
+          - interest_keywords: ["coding"]
+      - action: action_recommend_career_enhanced # Bot recommends and asks if user wants more details
+
+  - story: user asks for recommendation after already providing interest (e.g., for more options)
+    steps:
+      # GREETING HANDLED BY RULE
+      - intent: inform_interest
+        entities:
+          - interest_keyword: "art"
+      - slot_was_set:
+          - interest_keywords: ["art"]
+      - action: action_recommend_career_enhanced # Bot gives initial recommendation and asks
+      # User then explicitly asks for more recommendations
+      - intent: ask_recommendation
+      - action: action_recommend_career_enhanced # Bot recommends again (action might need logic for "more options")
+
+  - story: user directly asks for recommendation (bot should ask for interest)
+    steps:
+      # GREETING HANDLED BY RULE
+      - intent: ask_recommendation # User says: "Suggest careers"
+      - action: action_recommend_career_enhanced # This will utter_ask_interest (as slot is empty)
+      - intent: inform_interest # User says: "I like finance"
+        entities:
+          - interest_keyword: "finance"
+      - slot_was_set:
+          - interest_keywords: ["finance"]
+      - action: action_recommend_career_enhanced # Bot recommends and asks
+
+  - story: user gets recommendation and affirms interest in more details
+    steps:
+      # GREETING HANDLED BY RULE
+      - intent: inform_interest
+        entities:
+          - interest_keyword: "painting"
+      - slot_was_set:
+          - interest_keywords: ["painting"]
+      - action: action_recommend_career_enhanced # Bot recommends and asks with utter_ask_for_more_details
+      - intent: affirm # User says "yes"
+      - action: utter_handle_affirm # Bot responds to affirmation
+
+  - story: user gets recommendation and denies interest in more details
+    steps:
+      # GREETING HANDLED BY RULE
+      - intent: inform_interest
+        entities:
+          - interest_keyword: "design"
+      - slot_was_set:
+          - interest_keywords: ["design"]
+      - action: action_recommend_career_enhanced # Bot recommends and asks with utter_ask_for_more_details
+      - intent: deny # User says "no"
+      - action: utter_handle_denial # Bot responds to denial
+      - action: utter_anything_else # Ask if user wants help with anything else

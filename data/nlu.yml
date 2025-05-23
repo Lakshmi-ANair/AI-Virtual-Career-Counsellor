@@ -1,0 +1,86 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - good morning
+      - good evening
+      - hey there
+
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - see you around
+      - see you later
+      - take care
+      - talk to you later
+
+  - intent: affirm
+    examples: |
+      - yes
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+      - yup
+      - sure
+
+  - intent: deny
+    examples: |
+      - no
+      - never
+      - I don't think so
+      - no way
+      - not really
+      - nope
+
+
+  - intent: inform_interest
+    examples: |
+      - I am interested in [tech](interest_keyword) and [coding](interest_keyword)
+      - I like [arts](interest_keyword) and [design](interest_keyword)
+      - My passion is [commerce](interest_keyword) and [finance](interest_keyword)
+      - I enjoy [problem solving](interest_keyword)
+      - I'm good at [analytics](interest_keyword)
+      - I love [drawing](interest_keyword) and [painting](interest_keyword)
+      - I want to work with [computers](interest_keyword)
+      - Tell me about careers in [marketing](interest_keyword)
+      - What jobs are there for [writing](interest_keyword)?
+      - I'm into [biology](interest_keyword) and [research](interest_keyword)
+      - I like [helping people](interest_keyword)
+      - my interests are [cyber security](interest_keyword)
+      - i love [coding](interest_keyword)
+      - [art](interest_keyword)
+      - [finance](interest_keyword)
+      - [tech](interest_keyword)
+      - [design](interest_keyword)
+      - [business](interest_keyword)
+      - [science](interest_keyword)
+      - [marketing](interest_keyword)
+      - my interest is [art](interest_keyword)
+      - i like [finance](interest_keyword)
+      - i'm into [tech](interest_keyword)
+      - [coding](interest_keyword) is what I like
+
+  - intent: ask_recommendation
+    examples: |
+      - Can you recommend some careers?
+      - What jobs would suit me?
+      - Suggest some career paths
+      - What are my options?
+      - Give me some recommendations
+      - what else can i do
+      - show me other options
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you human?
+      - am I talking to a bot?
+      - am I talking to a human?
+      - what are you?
+      - who are you?

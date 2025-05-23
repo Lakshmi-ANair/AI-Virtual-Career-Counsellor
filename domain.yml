@@ -1,0 +1,53 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - inform_interest
+  - ask_recommendation
+  - bot_challenge
+
+entities:
+  - interest_keyword
+
+slots:
+  interest_keywords:
+    type: list
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: interest_keyword
+
+responses:
+  utter_greet:
+    - text: "Hello! I'm your AI Career Counsellor. Tell me about your interests or what you enjoy doing."
+  utter_goodbye:
+    - text: "Goodbye! Hope I was helpful. Feel free to come back anytime!"
+  utter_ask_interest:
+    - text: "Interesting! To give you the best recommendations, can you tell me more about your specific interests, skills, or what you enjoy doing?"
+  utter_default_fallback:
+    - text: "I'm sorry, I didn't quite understand that. Could you rephrase or tell me more about your interests like 'coding', 'art', or 'business'?"
+  utter_no_recommendation:
+    - text: "Based on what you've told me, I couldn't find specific career recommendations right now. Could you try being more specific with your interests or perhaps mention some different keywords?"
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa, here to help you explore careers!"
+  utter_ask_for_more_details: # Used by action_recommend_career_enhanced
+    - text: "Does this sound interesting, or would you like to explore other interests or options?"
+    - text: "What do you think about that? Shall we look into it further, or explore different paths?"
+  utter_handle_denial:
+    - text: "Okay, understood. No problem at all!"
+    - text: "Alright, let me know if you change your mind or want to discuss something else."
+  utter_handle_affirm: # For responding to affirm after asking for more details
+    - text: "Great! What specifically would you like to know more about regarding this career?"
+    - text: "Excellent! Do you have any specific questions about it, or shall I provide more general information?"
+  utter_anything_else:
+    - text: "Is there anything else I can help you with today regarding your career exploration?"
+
+actions:
+  - action_recommend_career_enhanced
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

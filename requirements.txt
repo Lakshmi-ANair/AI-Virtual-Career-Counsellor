@@ -1,0 +1,8 @@
+# requirements.txt
+rasa==3.6.*
+nltk==3.8.*
+streamlit==1.25.*
+requests
+spacy # If your Rasa pipeline needs it
+openai==1.* # Specify version for new API
+python-dotenv # Optional, for .env file

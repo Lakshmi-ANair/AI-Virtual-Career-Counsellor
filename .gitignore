@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+*.env # If you use .env files for API keys, IGNORE THEM!
+
+# Rasa specific
+models/*
+!models/.gitkeep # Allows the models folder to exist if empty, but ignores its contents
+.rasa/cache/*
+.rasa/logs/*
+results/*
+
+# NLTK Data (if downloaded locally within project - usually not)
+# nltk_data/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml # If you store secrets this way for local Streamlit
+
+# Sensitive files (add any others)
+# credentials.yml # Be CAREFUL: if it contains sensitive API keys, IGNORE.
+                  # If it's just for Rasa channels and not sensitive, you can commit.
+                  # For now, better to be safe and ignore if unsure.
+                  # If you are using environment variables for sensitive keys,
+                  # credentials.yml for channels is usually fine to commit.
